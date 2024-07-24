@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #slider{
+            width: 100vw;
+            height: 100vh;
+            background: url('/img/img1.jpg') center/cover;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #sol, #sag{
+            color: #fff;
+            background: transparent;
+            border: none;
+            font-size: 3em;
+            margin: 0 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="slider">
+        <button id="sol" onclick="solbtn()">❮</button>
+        <button id="sag" onclick="sagbtn()">❯</button>
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider")
+        let say = 0
+
+
+        function sagbtn(){
+            say++
+            slider.style.background = `url('/img/img${say}.jpg') center/cover`
+            if( say > 4) say = 0
+        }
+
+        function solbtn(){
+            say--
+            if( say < 1) say = 5
+            slider.style.background = `url('/img/img${say}.jpg') center/cover`
+
+        }
+
+        setInterval(sagbtn, 2000);
+    </script>
+</body>
+</html>
